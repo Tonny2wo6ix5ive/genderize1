@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { Text, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import { 
+    Text, 
+    StyleSheet, 
+    TextInput, 
+    TouchableOpacity, 
+    View,
+ } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
 
-const Form = ({ callApi, setName }) => {
-
-    //const [name, setName] = useState('');
-    
+const Form = ({ callApi, setName }) => {   
 
     return ( 
         <View style={styles.contener}>
@@ -14,7 +18,10 @@ const Form = ({ callApi, setName }) => {
                onChangeText={(val)=>setName(val)} 
             />
             <TouchableOpacity>
-                <Text onPress={callApi} style={styles.button}>Check</Text>
+                <View style={styles.button}>
+                    <Text onPress={callApi} style={styles.text}>Check</Text>
+                    <AntDesign name="search1" size={24} color="black" />
+                </View>
             </TouchableOpacity>
         </View>
      );
@@ -39,6 +46,13 @@ const styles = StyleSheet.create({
         backgroundColor:'orange',
         textAlign:'center',
         padding:15,
+        flexDirection:'row',
+        justifyContent:"center"
+    },
+    text:{
+        marginRight:10,
+        fontWeight:'bold',
+        fontSize:20,
     }
 })
  

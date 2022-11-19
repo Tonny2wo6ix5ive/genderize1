@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
       width: 200,
       margin:'auto',
       justifyContent:'center',
-      marginHorizontal: 20
+      marginHorizontal: 20,
     },
     text: {
         marginTop:10,

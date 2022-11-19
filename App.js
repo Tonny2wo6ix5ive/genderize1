@@ -1,7 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Alert, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { 
+  Alert, 
+  ImageBackground, 
+  StyleSheet, 
+  Text, 
+  Keyboard,
+  TouchableWithoutFeedback,
+  View } from 'react-native';
 import Header from './components/header';
 import Form from './components/form';
 import Output from './components/output';
@@ -28,14 +35,20 @@ export default function App() {
   }
 
   return (
-    <ImageBackground style={styles.container} source={img1} resizeMode="cover">
-      <Header />
-      <View>
-        <Form setName={setName} callApi={callApi}/>
-      </View>
-      <Output url={url}/>
-      <StatusBar style="auto" />    
-    </ImageBackground>
+    <TouchableWithoutFeedback onPress={()=>{
+      Keyboard.dismiss();
+    }}>
+      <ImageBackground style={styles.container} source={img1} resizeMode="cover">
+        <View style={styles.content}>
+          <Header />
+          <View style={styles.form}>
+            <Form setName={setName} callApi={callApi}/>
+          </View>
+          <Output url={url}/>
+          <StatusBar style="auto" />
+        </View>    
+      </ImageBackground>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -44,4 +57,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  content:{
+    flex:1,
+  },
+  form:{
+    flex:1,
+  }
 });
